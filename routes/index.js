@@ -13,6 +13,9 @@ const strings = {
     [12, 'Music'],
     [14, 'TV'],
     [18, 'Computers'],
+    [17, 'Science & Nature'],
+    [23, 'History'],
+    [25, 'Art'],
   ],
   difficulty: [
     [0, 'Any'],
