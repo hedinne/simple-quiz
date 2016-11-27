@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  main.main
+
+    section.answers
+
+      p.answers__text You answered
+      .answers__number #{data}
+      p.answers__text questions correctly
+
+    a(href="/").answers__link
+      button.answers__button Play Again

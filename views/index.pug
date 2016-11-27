@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  main.main
+    .heading__container
+      h2.heading__heading Welcome to #{info.title}.
+      h4.heading__subheading Select what kid of quiz you want.
+
+    form(method='POST', action='/play').form
+      .form__options
+        label(for='topic').form__label Select Topic
+        select(name='topic').form__select#topic
+          each item in info.topics
+            option(value=item[0]) #{item[1]}
+
+        label(for='difficulty').form__label Select Difficulty
+        select(name='difficulty').form__select#difficulty
+          each item in info.difficulty
+            option(value=item[0]) #{item[1]}
+
+      button.form__button Let's Play!
