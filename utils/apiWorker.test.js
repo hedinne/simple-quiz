@@ -3,12 +3,11 @@ const chaiAsPromised = require('chai-as-promised');
 const api = require('./apiWorker');
 
 chai.use(chaiAsPromised);
-chai.should();
 const expect = chai.expect;
 
 describe('getQuestions', () => {
   it('should return a object', () => {
-    expect(api.getQuestions('any', 'easy', 10))
+    expect(api.getQuestions(12, 'easy', 10))
       .to.eventually.become('obj');
   });
   it('should return empty object if no parameters', () => {

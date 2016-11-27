@@ -53,21 +53,6 @@ router.post('/play', (req, res) => {
     });
 });
 
-// router.post('/play', (req, res) => {
-//   api.getQuestions(req.body.topic, req.body.difficulty, 10)
-//     .then((response) => {
-//       res.render('quiz', {
-//         info: strings,
-//         data: response,
-//       });
-//     })
-//     .catch((error) => {
-//       res.render('quiz', {
-//         data: error,
-//         info: strings,
-//       });
-//     });
-// });
 
 router.post('/score', (req, res, next) => {
   let count = 0;
