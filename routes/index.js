@@ -1,5 +1,6 @@
 const express = require('express');
 const api = require('../utils/apiWorker.js');
+const he = require('he');
 
 const router = express.Router();
 
@@ -29,9 +30,16 @@ router.get('/', (req, res, next) => {
 router.post('/play', (req, res) => {
   api.getQuestions(req.body.topic, req.body.difficulty, 10)
     .then((response) => {
+      const dataz = response.results;
+      for (const item of dataz) { //eslint-disable-line
+        item.question = he.decode(item.question);
+        for (let ans of item.incorrect_answers) { //eslint-disable-line
+          ans = he.decode(ans);
+        }
+      }
       res.render('quiz', {
         info: strings,
-        data: response,
+        data: dataz,
       });
     })
     .catch((error) => {
@@ -41,6 +49,22 @@ router.post('/play', (req, res) => {
       });
     });
 });
+
+// router.post('/play', (req, res) => {
+//   api.getQuestions(req.body.topic, req.body.difficulty, 10)
+//     .then((response) => {
+//       res.render('quiz', {
+//         info: strings,
+//         data: response,
+//       });
+//     })
+//     .catch((error) => {
+//       res.render('quiz', {
+//         data: error,
+//         info: strings,
+//       });
+//     });
+// });
 
 router.post('/score', (req, res, next) => {
   let count = 0;

@@ -4,9 +4,9 @@ block content
   main.main
 
     form(method="POST", action="/score").quiz
-      each item, index in data.results
+      each item, index in data
         section(id=index).question
-          p.question__number Question #{index + 1} / #{data.results.length}
+          p.question__number Question #{index + 1} / #{data.length}
           p.question__text #{item.question}
 
           fieldset.question__group
