@@ -27,10 +27,8 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/play', (req, res) => {
-  // api.getQuestions(req.body.topic, req.body.difficulty, 10)
-  api.getQuestions()
+  api.getQuestions(req.body.topic, req.body.difficulty, 10)
     .then((response) => {
-      console.log(response);
       res.render('quiz', {
         info: strings,
         data: response,
